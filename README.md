@@ -169,18 +169,16 @@ On Windows, the simplest way to build FoundationDB is by using Docker for Window
 1. Make sure docker is configured to run [Windows containers](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 1. Open Powershell as Administrator.
 1. Clone the FoundationDB repository
-1. Create a build directory that is not in your source tree (for example `C:\build\`)
-1. Run the build script and pass the above directory (for example `foundationdb\build\build.ps1 -Build C:\build`).
+1. Create a build directory that is not in your source tree (for example `C:\temp\build\`)
+1. Run the build script and pass the above directory (for example `foundationdb\build\build.ps1 -Build C:\temp\build`).
    1. If you want to first check which commands this will run you can add the `-DryRun` flag. This will also create a 
       file called `docker_command.ps1` in your build directory.
-   1. By default the docker image this will create is called `fdb`. You can change this name with the argument `-ImageName`.
+   1. By default the docker image this will create is called `fdb-windows`. You can change this name with the argument `-ImageName`.
    1. If you want to build another source tree you can pass a source directory to `-SourceDir`.
    1. By default docker will use at most number of CPUs minus 2 for the OS. It is not recommended to put this number higher
       (though putting it lower makes sense if you see performance problems or run out of memory). You can control this with
       the option `-Cpus`.
    1. By default docker will leave 2GB of main memory for the OS. To change this you can change this with the `-Memory` option.
       This option is in bytes but accepts suffixes (so you can run `-Memory 60G`).
-   1. This will call `docker build` each time the script runs. If you know you don't need to run `docker build` you can pass
-      the `-SkipDockerBuild` flag.
 
-TODO: Re-add instructions for TLS support [#3022](https://github.com/apple/foundationdb/issues/3022)
+Please note that, currently, TLS support is disabled in the Windows build.
